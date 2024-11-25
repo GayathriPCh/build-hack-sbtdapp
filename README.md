@@ -54,13 +54,13 @@ This simulates real-world scenarios where organizations need to issue verifiable
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
-cd sbt-certification
+git clone https://github.com/thekalpstudio/Build_Hackathon.git
+cd Build_Hackathon
 ```
 
 2. Navigate to smart contract directory:
 ```bash
-cd smart-contract
+cd sbtkalp
 ```
 
 3. Install dependencies:
@@ -72,7 +72,8 @@ go mod tidy
 
 1. Navigate to frontend directory:
 ```bash
-cd frontend
+cd..
+cd certification
 ```
 
 2. Install dependencies:
