@@ -27,211 +27,283 @@ This simulates real-world scenarios where organizations need to issue verifiable
 - Enhance your skills in blockchain development and decentralized applications (**dApps**)
 
 ---
+## 🌟 Features
 
-## Checkpoint 0: 📦 Installation
+- Issue non-transferable Soulbound Tokens (SBTs)
+- View certification status and details
+- Modern, responsive UI built with Next.js and Tailwind CSS
+- Secure authentication using API keys
+- Real-time blockchain interaction
 
-#### Prerequisites:
+## 🛠️ Tech Stack
 
-- **Go** version `>=1.19` but `<1.20`
-- **Kalp SDK** for smart contract development
+- **Smart Contract:** Go + Kalp SDK
+- **Frontend:** Next.js, TypeScript, Tailwind CSS
+- **Blockchain:** Kalp Network
+- **API:** RESTful endpoints via Kalp Studio
 
-### Setting up the Project
+## 📦 Installation
 
-1. **Clone the repository:**
-   ```sh
-   git clone <your-repo-url>
-   ```
+### Prerequisites
 
-2. **Navigate to the project directory:**
-   ```sh
-   cd sbt-certification
-   ```
+- Go (>=1.19, <1.20)
+- Node.js (>=14.x)
+- npm (>=6.x)
 
-3. **Install dependencies:**
-   ```sh
-   go mod tidy
-   ```
+### Smart Contract Setup
 
----
+1. Clone the repository:
+```bash
+git clone https://github.com/thekalpstudio/Build_Hackathon.git
+cd Build_Hackathon
+```
 
-## Checkpoint 1: 🏗 Smart Contract Overview
+2. Navigate to smart contract directory:
+```bash
+cd sbtkalp
+```
 
-The Soulbound Token certification contract includes several key components:
+3. Install dependencies:
+```bash
+go mod tidy
+```
 
-### 1. Certificate Metadata Structure
+### Frontend Setup
+
+1. Navigate to frontend directory:
+```bash
+cd..
+cd certification
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create `.env.local` file:
+```bash
+cp .env.example .env.local
+```
+
+4. Update environment variables:
+```env
+NEXT_PUBLIC_API_KEY=your-kalp-api-key
+```
+
+## 🚀 Deployment
+
+### Smart Contract Deployment
+
+1. Log in to [Kalp Studio](https://studio.kalp.network)
+2. Navigate to "Deploy Contract"
+3. Upload the smart contract
+4. Save the generated contract ID and API endpoints
+
+### Frontend Deployment
+
+1. Build the application:
+```bash
+npm run build
+```
+
+2. Start the production server:
+```bash
+npm run dev
+```
+
+## 🔑 API Configuration
+
+Update the following in your frontend:
+
+1. Contract ID: `vHYQcRijQGB3UpVhqc3UeBM2D3ztjPuS1732534432325`
+2. API Key: Your generated API key
+3. Default wallet: `ded665bca7d412891f44a571d908b66184b0ee10`
+
+## 📝 Smart Contract Methods
+
+### Initialize
 ```go
-type SBTMetadata struct {
-    Description string `json:"description"`
+Initialize(sdk kalpsdk.TransactionContextInterface, metadata string) error
+```
+Initializes the SBT contract with metadata.
+
+### MintSBT
+```go
+MintSBT(sdk kalpsdk.TransactionContextInterface, address string) error
+```
+Issues a new SBT to the specified address.
+
+### QuerySBT
+```go
+QuerySBT(sdk kalpsdk.TransactionContextInterface, owner string, tokenID string) (*SoulboundToken, error)
+```
+Retrieves SBT details by owner and token ID.
+
+### GetSBTByOwner
+```go
+GetSBTByOwner(sdk kalpsdk.TransactionContextInterface, owner string) (*SoulboundToken, error)
+```
+Retrieves SBT details by owner address.
+
+### GetAllTokenIDs
+```go
+GetAllTokenIDs(sdk kalpsdk.TransactionContextInterface) ([]string, error)
+```
+Returns all issued token IDs.
+
+## 🎯 Usage Examples
+
+### Minting a New SBT
+```typescript
+const mintSBT = async (recipientAddress: string) => {
+  try {
+    await fetch('https://gateway-api.kalp.studio/v1/contract/kalp/invoke/vHYQcRijQGB3UpVhqc3UeBM2D3ztjPuS1732534432325/MintSBT', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.NEXT_PUBLIC_API_KEY!,
+      },
+      body: JSON.stringify({
+        network: "TESTNET",
+        blockchain: "KALP",
+        walletAddress: "ded665bca7d412891f44a571d908b66184b0ee10",
+        args: {
+          address: recipientAddress
+        }
+      })
+    });
+  } catch (error) {
+    console.error('Error minting SBT:', error);
+  }
+};
+```
+
+### Querying an SBT
+```typescript
+const querySBT = async (owner: string, tokenId: string) => {
+  // Implementation similar to mint with different endpoint
+};
+```
+
+# 🏆 Add Below feature Goal To win The Hackathon SBT (Soulbound Token) Certification System
+
+## 🎯 Hackathon Winning Goals & Requirements
+
+### Frontend Implementation Requirements
+
+#### 1. Certificate Query Interface
+- Implement a certificate verification section that allows users to:
+  - Query SBT by owner address and token ID using `QuerySBT` endpoint
+  - Display certificate details in a visually appealing format
+  - Show validation status and metadata
+```typescript
+POST https://gateway-api.kalp.studio/v1/contract/kalp/query/{contractId}/QuerySBT
+{
+  "network": "TESTNET",
+  "blockchain": "KALP",
+  "walletAddress": "ded665bca7d412891f44a571d908b66184b0ee10",
+  "args": {
+    "owner": "string",
+    "tokenID": "string"
+  }
 }
 ```
 
-### 2. Soulbound Token Structure
-```go
-type SoulboundToken struct {
-    Owner    string `json:"owner"`
-    TokenID  string `json:"tokenID"`
-    Metadata string `json:"metadata"`
+#### 2. Certificate Ownership Checker
+- Create an interface to check certificate ownership that:
+  - Retrieves SBT details by owner address using `GetSBTByOwner` endpoint
+  - Shows certificate status and details
+  - Provides easy verification for institutions
+```typescript
+POST https://gateway-api.kalp.studio/v1/contract/kalp/query/{contractId}/GetSBTByOwner
+{
+  "network": "TESTNET",
+  "blockchain": "KALP",
+  "walletAddress": "ded665bca7d412891f44a571d908b66184b0ee10",
+  "args": {
+    "owner": "string"
+  }
 }
 ```
 
-### Core Functions:
-
-#### Initialize Contract
-- Sets up the contract with initial metadata
-- Ensures single initialization
-- Stores metadata on-chain
-
-#### Mint Certificate (SBT)
-- Issues a new certificate to a recipient
-- Generates unique TokenID using UUID
-- Ensures one certificate per address
-- Stores certificate data with composite keys
-
-#### Query Functions
-- Retrieve certificate by owner and tokenID
-- Get certificate by owner address
-- Verify certificate authenticity
-
-#### Transfer Prevention
-- Explicitly blocks transfer attempts
-- Ensures certificates remain soulbound
-
----
-
-## Checkpoint 2: 📀 Key Features
-
-### 1. Soulbound Nature
-- Certificates are non-transferable by design
-- Permanent association with the recipient's address
-
-### 2. Unique Identification
-- Each certificate has a unique UUID
-- Prevents duplicate issuance to the same address
-
-### 3. Efficient Storage
-- Uses composite keys for optimized queries
-- Maintains owner-to-certificate mappings
-
-### 4. Metadata Management
-- Stores certificate metadata on-chain
-- Supports descriptive information about certifications
-
----
-
-## Checkpoint 3: 🔧 Function Details
-
-### 1. Initialize
-```go
-func (s *SmartContract) Initialize(sdk kalpsdk.TransactionContextInterface, metadata SBTMetadata) error
+#### 3. Certificate Gallery/Explorer
+- Develop a certificate explorer that:
+  - Lists all issued certificates using `GetAllTokenIDs` endpoint
+  - Implements pagination and search functionality
+  - Displays certificates in a grid/list view
+```typescript
+POST https://gateway-api.kalp.studio/v1/contract/kalp/query/{contractId}/GetAllTokenIDs
+{
+  "network": "TESTNET",
+  "blockchain": "KALP",
+  "walletAddress": "ded665bca7d412891f44a571d908b66184b0ee10",
+  "args": {}
+}
 ```
-- Sets up the contract with certification metadata
-- Can only be called once
 
-### 2. Mint Certificate
-```go
-func (s *SmartContract) MintSBT(sdk kalpsdk.TransactionContextInterface) error
+#### 4. Transfer Restriction Notice
+- Implement transfer attempt handling that:
+  - Shows proper error messages when transfer is attempted using `TransferSBT` endpoint
+  - Explains the soulbound nature of the certificates
+  - Provides educational information about SBTs
+```typescript
+POST https://gateway-api.kalp.studio/v1/contract/kalp/query/{contractId}/TransferSBT
+{
+  "network": "TESTNET",
+  "blockchain": "KALP",
+  "walletAddress": "ded665bca7d412891f44a571d908b66184b0ee10",
+  "args": {
+    "from": "string",
+    "to": "string",
+    "tokenID": "string"
+  }
+}
 ```
-- Issues a new certificate to the caller
-- Generates unique TokenID
-- Prevents duplicate issuance
 
-### 3. Query Certificate
-```go
-func (s *SmartContract) QuerySBT(sdk kalpsdk.TransactionContextInterface, owner string, tokenID string) (*SoulboundToken, error)
-```
-- Retrieves certificate details
-- Returns owner and metadata information
+### UI/UX Requirements
 
-### 4. Get Certificate by Owner
-```go
-func (s *SmartContract) GetSBTByOwner(sdk kalpsdk.TransactionContextInterface, owner string) (*SoulboundToken, error)
-```
-- Finds certificate associated with an address
-- Returns full certificate details
+1. **Dashboard Layout**
+   - Clean, modern interface with clear navigation
+   - Responsive design for all screen sizes
+   - Loading states and error handling
+   - Toast notifications for actions
 
----
+### Technical Requirements
 
-## Checkpoint 4: 🚀 Deployment Steps
+1. **API Integration**
+   ```typescript
+   // Example API hook structure
+   const useSBTApi = () => {
+     const querySBT = async (owner: string, tokenId: string) => {
+       // Implementation
+     };
 
-1. **Prepare the Contract:**
-   - Compile the Go code
-   - Package required files
+     const getSBTByOwner = async (owner: string) => {
+       // Implementation
+     };
 
-2. **Deploy using Kalp Studio:**
-   - Upload contract package
-   - Set initial metadata
-   - Generate API endpoints
+     const getAllTokenIDs = async () => {
+       // Implementation
+     };
 
-3. **Initialize Contract:**
-   - Set certification parameters
-   - Verify deployment
+     const attemptTransfer = async (from: string, to: string, tokenId: string) => {
+       // Implementation
+     };
 
----
+     return { querySBT, getSBTByOwner, getAllTokenIDs, attemptTransfer };
+   };
+   ```
 
-## Best Practices
 
-1. **Security Considerations:**
-   - Implement proper access control
-   - Validate all inputs
-   - Handle errors gracefully
 
-2. **Storage Optimization:**
-   - Use composite keys effectively
-   - Minimize on-chain data
-   - Follow proper state management patterns
+## 🔒 Security
 
-3. **Testing:**
-   - Unit test all functions
-   - Verify soulbound properties
-   - Test edge cases
+- API keys are stored securely in environment variables
+- Non-transferable tokens ensure certificate authenticity
+- Smart contract includes authorization checks
 
----
+## 📄 License
 
-## Common Use Cases
-
-1. **Academic Credentials**
-   - University degrees
-   - Course completions
-   - Training certificates
-
-2. **Professional Certifications**
-   - Industry qualifications
-   - Skills attestations
-   - License verifications
-
-3. **Achievement Recognition**
-   - Awards
-   - Badges
-   - Accomplishments
-
----
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
----
-
-## License
-
-[Your chosen license]
-
----
-
-## Support
-
-For questions and support:
-- Create an issue in the repository
-- Contact the development team
-- Check the documentation
-
----
-
-**Get started building your certification system today!** 🚀
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
