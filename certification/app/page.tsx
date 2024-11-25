@@ -59,9 +59,9 @@ const OnChainCertification = () => {
       console.error('Mint error:', error);
       setResult({
         status: 'error',
-        message: error.message === 'AUTH_ERROR' 
+        message: (error instanceof Error && error.message === 'AUTH_ERROR') 
           ? 'Authentication failed. Please check API key.'
-          : error.message || 'Failed to mint certification. Please try again.'
+          : (error instanceof Error ? error.message : 'Failed to mint certification. Please try again.')
       });
     } finally {
       setLoading(false);
