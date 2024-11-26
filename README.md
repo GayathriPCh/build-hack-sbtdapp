@@ -227,22 +227,8 @@ POST https://gateway-api.kalp.studio/v1/contract/kalp/query/{contractId}/GetSBTB
 }
 ```
 
-#### 3. Certificate Gallery/Explorer
-- Develop a certificate explorer that:
-  - Lists all issued certificates using `GetAllTokenIDs` endpoint
-  - Implements pagination and search functionality
-  - Displays certificates in a grid/list view
-```typescript
-POST https://gateway-api.kalp.studio/v1/contract/kalp/query/{contractId}/GetAllTokenIDs
-{
-  "network": "TESTNET",
-  "blockchain": "KALP",
-  "walletAddress": "ded665bca7d412891f44a571d908b66184b0ee10",
-  "args": {}
-}
-```
 
-#### 4. Transfer Restriction Notice
+#### 3. Transfer Restriction Notice
 - Implement transfer attempt handling that:
   - Shows proper error messages when transfer is attempted using `TransferSBT` endpoint
   - Explains the soulbound nature of the certificates
