@@ -1,21 +1,149 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a1219;
+  --foreground: #ffffff;
+  --accent: #2fbeab;
+  --secondary: #1a2632;
+  --text-primary: #ffffff;
+  --text-secondary: #8b95a1;
+}
+@font-face {
+  font-family: 'Sp';
+  src: url('./components/SpButchLiteBold-8O88B.otf') format('truetype');
+  font-weight: 700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Gameplay';
+  src: url('./components/GamePlayed-vYL7.ttf') format('truetype');
+  font-weight: 400;
 }
 
+@font-face {
+  font-family: 'Gameoutline';
+  src: url('./components/GamePlayedOutline-wrX8.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family:'Audiowide'; ;
+  src: url('./components/Audiowide-en4g.ttf')format('truetype');
+}
+@font-face {
+  font-family: 'Z';
+  src: url('./components/ZilapGamePersonalUse-EaPDg.ttf');
+}
 body {
+  background-color: var(--background);
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--background) 0%, rgba(10, 18, 25, 0.8) 100%);
+}
+
+.sidebar {
+  width: 280px;
+  background-color: var(--secondary);
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .logo {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Gameplay' , sans-serif;
+  margin-bottom: 3rem;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  display: block;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-family: 'Gameplay', sans-serif;
+}
+
+.nav a:hover {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 4rem;
+}
+
+
+
+
+input, button:not(.wallet-button) {
+  background-color: var(--secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+h1, h2, h3 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+.wallet-button {
+  background: radial-gradient(circle, #000000c0, #000000);
+  color: #ffffff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Gameplay', sans-serif;
+  cursor: pointer;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  min-width: 160px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 176, 0.6);
+}
+
+.wallet-button:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 176, 1);
+  transform: scale(1.05);
+}
+
+.wallet-button:active {
+  background: radial-gradient(circle, #000c08, #003311);
+  box-shadow: 0 0 20px rgba(0, 255, 176, 0.8);
 }

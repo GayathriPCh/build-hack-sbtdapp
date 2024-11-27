@@ -1,0 +1,27 @@
+.wallet-button {
+    background: radial-gradient(circle, #00FFB0, #000000);
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    min-width: 160px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 176, 0.6);
+  }
+  
+  .wallet-button:hover {
+    box-shadow: 0 0 40px rgba(0, 255, 176, 1);
+    transform: scale(1.05);
+  }
+  
+  .wallet-button:active {
+    background: radial-gradient(circle, #00FFB0, #003311);
+    box-shadow: 0 0 20px rgba(0, 255, 176, 0.8);
+  }
