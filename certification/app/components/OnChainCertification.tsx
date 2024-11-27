@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 
-const FIXED_WALLET = "ded665bca7d412891f44a571d908b66184b0ee10";
-const API_KEY = "3aa171233676e8294e934cadb352a5643aab3b945cbfb1328b7770f5adef254071b400d108780a6f8897a577038192c13ffa78d81cf46e442eec758d51c66134bb6003";
+const FIXED_WALLET = process.env.NEXT_PUBLIC_FIXED_WALLET;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 const OnChainCertification = () => {
   const [recipientAddress, setRecipientAddress] = useState('');
@@ -48,7 +48,7 @@ const OnChainCertification = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-api-key': API_KEY,
+            'x-api-key': API_KEY || '',
             Accept: 'application/json',
           },
           body: JSON.stringify(payload),
@@ -280,6 +280,55 @@ const OnChainCertification = () => {
     100% {
       left: 150%;
       top: 150%;
+    }
+  }
+      @media (max-width: 768px) {
+    .certification-container {
+      padding: 20px; /* Reduce padding for smaller screens */
+    }
+
+    .title {
+      font-size: 3rem; /* Smaller title size */
+    }
+
+    .form {
+      gap: 15px; /* Reduce space between form elements */
+    }
+
+    .label {
+      font-size: 1.5rem; /* Smaller label font */
+    }
+
+    .input {
+      font-size: 1.4rem; /* Adjust input text size */
+    }
+
+    .button {
+      font-size: 1.6rem; /* Adjust button text size */
+      padding: 14px; /* Adjust padding */
+    }
+
+    .error, .result {
+      font-size: 1.5rem; /* Adjust error/result message size */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title {
+      font-size: 2.5rem; /* Further reduce title size */
+    }
+
+    .input {
+      font-size: 1.3rem; /* Smaller input text for smaller screens */
+    }
+
+    .button {
+      font-size: 1.4rem; /* Adjust button size */
+      padding: 12px;
+    }
+
+    .error, .result {
+      font-size: 1.4rem; /* Smaller text for error/result */
     }
   }
       `}</style>

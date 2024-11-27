@@ -172,6 +172,86 @@ const HeroSection = () => {
           font-size: 1.125rem;
           color: #d1d1d1;
         }
+          @media (max-width: 768px) {
+  .hero-banner {
+    padding: 40px 20px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .hero-button {
+    font-size: 1rem;
+    padding: 10px 30px;
+  }
+
+  .feature-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-container, .text-container {
+    width: 100%;
+  }
+
+  .feature-image {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .sbt-info-container {
+    padding: 15px;
+  }
+
+  .sbt-title {
+    font-size: 1.25rem;
+  }
+
+  .sbt-description {
+    font-size: 1rem;
+  }
+
+  .restriction-notice {
+    padding: 20px;
+  }
+
+  .restriction-notice h3 {
+    font-size: 1.5rem;
+  }
+
+  .restriction-notice p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    font-size: 0.875rem;
+    padding: 8px 20px;
+  }
+
+  .sbt-description {
+    font-size: 0.875rem;
+  }
+
+  .restriction-notice p {
+    font-size: 0.875rem;
+  }
+}
+
       `}</style>
     </div>
   );
