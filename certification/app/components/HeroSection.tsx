@@ -12,9 +12,9 @@ const HeroSection = () => {
   return (
     <div className="hero-container">
       <div className="hero-banner">
-        <h1 className="hero-title">Welcome to the SBT Certification System</h1>
-        <p className="hero-subtitle">A decentralized platform for verifying and managing on-chain certifications.</p>
-        <button className="hero-button" onClick={handleButtonClick}>Connect Wallet and Verify Your Token</button>
+        <h1 className="hero-title">Claim your On-chain SBT Certification</h1>
+        <p className="hero-subtitle">A decentralized platform for verifying and managing on-chain SBTs.</p>
+        <button className="hero-button" onClick={handleButtonClick}>Connect Wallet and Mint Your First SBT!</button>
       </div>
 
       <div className="section-title">
@@ -56,7 +56,7 @@ const HeroSection = () => {
           padding: 20px;
         }
         .hero-banner {
-          background: linear-gradient(135deg, #258054, #1a1a1a);
+          background: linear-gradient(135deg, #0a1219, #1a1a1a);
           text-align: center;
           padding: 80px 20px;
           border-radius: 15px;
@@ -64,12 +64,13 @@ const HeroSection = () => {
           color: white;
         }
         .hero-title {
+
           font-size: 4rem;
           font-weight: 800;
           margin-bottom: 20px;
-          background: linear-gradient(45deg, #258054, #00b894);
+          background: linear-gradient(45deg, #000000, #63f2ad, #258054);
           -webkit-background-clip: text;
-          background-clip: text;
+          -webkit-text-fill-color: transparent;
           color: transparent;
           font-family: 'Audiowide', sans-serif;
         }
@@ -77,8 +78,9 @@ const HeroSection = () => {
           font-size: 1.5rem;
           font-family: 'Gameplay', sans-serif;
           margin-bottom: 30px;
-          color: #b0b0b0;
-        }
+ background: linear-gradient(45deg, #000000, #ffffff, #258054);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;        }
         .hero-button {
         font-family: 'Sp', sans-serif;
           background: linear-gradient(45deg, #258054, #00b894);
@@ -115,6 +117,7 @@ const HeroSection = () => {
 
         .image-container {
           flex: 1;
+          color: #1a1a1a;
         }
 
         .feature-image {
@@ -129,7 +132,7 @@ const HeroSection = () => {
         }
 
         .sbt-info-container {
-          background-color: #1e1e1e;
+          background-color: white;
           padding: 20px;
           border-radius: 15px;
           margin-bottom: 30px;
@@ -139,7 +142,9 @@ const HeroSection = () => {
         .sbt-title {
         font-family: 'Gameplay', sans-serif;
           font-size: 1.5rem;
-          color: #258054;
+ background: linear-gradient(45deg, #000000, #63f2ad, #258054);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;    
           font-weight: 700;
           margin-bottom: 10px;
         }
@@ -147,16 +152,17 @@ const HeroSection = () => {
         .sbt-description {
         font-family: 'Sp', sans-serif;
           font-size: 1.125rem;
-          color: #d1d1d1;
+          color: #0a1219;
         }
 
         .restriction-notice {
-        font-family: 'Gameplay', sans-serif;
-          background-color: #121212;
+        font-family: 'Sp', sans-serif;
+          background-color: #ffffff;
           padding: 40px;
           border-radius: 15px;
           margin-top: 60px;
-          text-align: center;
+          text-align: center; 
+          color: #1a1a1a;
         }
 
         .restriction-notice h3 {
@@ -164,13 +170,17 @@ const HeroSection = () => {
           font-size: 1.75rem;
           font-weight: 700;
           margin-bottom: 20px;
-          color: #ff4757;
+            background: linear-gradient(45deg, #610e1b, #ff4757, #610e1b);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;    
+        }
         }
 
         .restriction-notice p {
         font-family: 'Sp', sans-serif;
           font-size: 1.125rem;
           color: #d1d1d1;
+          
         }
           @media (max-width: 768px) {
   .hero-banner {
