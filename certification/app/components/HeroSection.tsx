@@ -12,7 +12,7 @@ const HeroSection = () => {
   return (
     <div className="hero-container">
       <div className="hero-banner">
-        <h1 className="hero-title">Claim your On-chain SBT Certification</h1>
+        <h1 className="hero-title">Claim your On-chain SBT Certification 🎓</h1>
         <p className="hero-subtitle">A decentralized platform for verifying and managing on-chain SBTs.</p>
         <button className="hero-button" onClick={handleButtonClick}>Connect Wallet and Mint Your First SBT!</button>
       </div>
