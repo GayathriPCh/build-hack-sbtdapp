@@ -22,11 +22,12 @@ const HeroSection = () => {
 
       <div className="feature-section">
         <div className="image-container">
-          <img
-            src="https://ghost.zelta.io/content/images/2023/03/image-65.png"
-            alt="Soulbound Token Image"
-            className="feature-image"
-          />
+        <img
+  src='/soulbound-token.png'
+  alt="Soulbound Token Image"
+  className="feature-image"
+/>
+
         </div>
         <div className="text-container">
           <div className="sbt-info-container">
