@@ -1,6 +1,7 @@
 # 🎓 Build Your Own Certification System using Soulbound Tokens on Kalp Blockchain
 
 ## On-Chain Certification Challenge
+![image](https://github.com/user-attachments/assets/a74d72b2-344b-49b8-a726-e9c94ac20439)
 
 ---
 
